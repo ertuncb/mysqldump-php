@@ -364,6 +364,74 @@ After more than 8 years, there is barely anything left from the original source 
 Originally based on James Elliott's script from 2009.
 https://code.google.com/archive/p/db-mysqldump/
 
+```mermaid
+  info
+```
+
+```mermaid
+graph TD
+    subgraph Local Machine
+        A[Start: New Python Project Files] --> B(Initialize Git<br>git init);
+        B --> C;
+        C[Working Directory];
+        C -- Add Files --> D(Staging Area<br>git add .);
+        C -- Modify Files --> C;
+        D -- Commit Changes --> E(Local Repository<br>git commit -m &quot;message&quot;);
+        E -- Create Branch --> F(New Feature Branch<br>git checkout -b feature-branch);
+        F -- Work on Feature --> G;
+        G[Working Directory - Feature Branch];
+        G -- Add Changes --> H;
+        H[Staging Area - Feature Branch<br>git add .];
+        H -- Commit Feature Changes --> I(Local Repository - Feature Branch<br>git commit -m &quot;feature changes&quot;);
+        I -- Switch to Main --> J(Checkout Main<br>git checkout main);
+        J --> E;
+        E -- Merge Branch --> K(Merge Feature Branch<br>git merge feature-branch);
+        K -- Handle Conflicts? --> L{Resolve Conflicts};
+        L -- Add Resolved Files --> D;
+        K -- No Conflicts --> E;
+        E -- Add Remote --> M(Add Remote Origin<br>git remote add origin &lt;repo_url&gt;);
+        M --> N(Push to Remote<br>git push -u origin main);
+        I -- Push Feature Branch --> O(Push Feature Branch<br>git push origin feature-branch);
+    end
+
+    subgraph Remote Repository
+        P[GitHub Repository];
+        N --> P;
+        O --> P;
+        P -- Clone Repository --> Q(Clone to Local Machine<br>git clone &lt;repo_url&gt;);
+        P -- Fetch Changes --> R(Fetch Remote Changes<br>git fetch origin);
+        P -- Pull Changes --> S(Pull Remote Changes<br>git pull origin main);
+    end
+
+    Q --> E;
+    R --> E;
+    S --> E;
+
+    style P fill:transparent,stroke:#333,stroke-width:2px
+    style A fill:transparent,stroke:#333,stroke-width:2px
+    style E fill:transparent,stroke:#333,stroke-width:2px
+    style I fill:transparent,stroke:#333,stroke-width:2px
+    style L fill:transparent,stroke:#f00,stroke-width:2px
+    style C fill:transparent,stroke:#333,stroke-width:1px
+    style G fill:transparent,stroke:#333,stroke-width:1px
+    style H fill:transparent,stroke:#333,stroke-width:1px
+    style D fill:transparent,stroke:#333,stroke-width:1px
+    style B fill:transparent,stroke:#333,stroke-width:1px
+    style F fill:transparent,stroke:#333,stroke-width:1px
+    style J fill:transparent,stroke:#333,stroke-width:1px
+    style K fill:transparent,stroke:#333,stroke-width:1px
+    style M fill:transparent,stroke:#333,stroke-width:1px
+    style N fill:transparent,stroke:#333,stroke-width:1px
+    style O fill:transparent,stroke:#333,stroke-width:1px
+    style Q fill:transparent,stroke:#333,stroke-width:1px
+    style R fill:transparent,stroke:#333,stroke-width:1px
+    style S fill:transparent,stroke:#333,stroke-width:1px
+```
+
+
+
+
+
 Adapted and extended by Michael J. Calkins.
 https://github.com/clouddueling
 
